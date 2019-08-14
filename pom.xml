@@ -12,6 +12,7 @@
     <modules>
         <module>ad-eureka</module>
         <module>ad-gateway</module>
+        <module>wlarein-ad-service</module>
     </modules>
 
     <name>wlarein-ad-spring-cloud</name>

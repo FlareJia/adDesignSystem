@@ -53,3 +53,15 @@ Kafka 2.1.0
   2.2 Zuul作为网关
     Zuul的生命周期：filters{Pre Routing Post Error Costom}
     网关可以用来做权限校验
+ 
+3.ad-common模块
+  3.1 通用代码定义、配置定义
+  3.2 统一的响应处理
+    advice包用于控制器拦截,Advice在spring中就是对xx功能增强
+    @RestControllerAdvice(ControllerAdvice)就是对控制器增强，之所以使用RestControllerAdvice，是因为我们对外提供的都是Rest接口(json)
+    我们需要对Controller返回内容做一些额外的工作，即功能增强，就需要利用到这个注解。
+    如果对Controller的处理过程比较复杂，根据处理的分类，可以制定多个ResponseBodyAdvice，并使用@Order制定处理顺序
+  3.3 统一的异常处理
+  
+  
+  
