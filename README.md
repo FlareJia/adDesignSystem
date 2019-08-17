@@ -63,5 +63,26 @@ Kafka 2.1.0
     如果对Controller的处理过程比较复杂，根据处理的分类，可以制定多个ResponseBodyAdvice，并使用@Order制定处理顺序
   3.3 统一的异常处理
   
+4.Spring boot
+  4.1 IOC
+   1)读取Bean配置信息： XML(Bean)、Java类@Configuration、注解@Autowire（定义bean之间的依赖关系，同时也是配置信息）
+   2)根据bean注册表去实例化bean：bean1 @Component、bean2 @Service、bean3 @Repository
+   3)将bean实例放到容器中
+   4)应用程序使用
+  4.2 SpringMVC
+   1)client发送http请求给DispatchServlet（servlet.xml）
+   2)DispatchServlet寻找处理器，到了HandlerMapping
+   3)DispatchServlet调用处理器，到了Controller
+   4)Controller调用业务处理服务，到了Service
+   5)得到处理结果，从ModelAndView传给DispatchServlet
+   6)同时处理视图映射，到了ViewResolver
+   7)处理结果从DisoatchServlet传到Model进行渲染
+   8)之后Model将模型数据传到View
+   9)最后View将Http响应返回给client
+ 
+5.广告投放系统数据表设计
+  5.1 四个概念：用户账户、推广计划<-- 一对多 -->推广单元<-- 多对多 -->创意
+  5.2 推广单元：关键词限制、地域限制、兴趣限制
+  
   
   
