@@ -13,6 +13,7 @@ import java.util.Date;
 @Entity
 @Table(name = "ad_creative")
 public class Creative {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -26,10 +27,7 @@ public class Creative {
     @Column(name = "type", nullable = false)
     private Integer type;
 
-    /**
-     * 物料类型，比如图片可以是 bmp,jpg等
-     */
-
+    /** 物料的类型, 比如图片可以是 bmp, jpg等等 */
     @Basic
     @Column(name = "material_type", nullable = false)
     private Integer materialType;
@@ -42,23 +40,17 @@ public class Creative {
     @Column(name = "width", nullable = false)
     private Integer width;
 
-    /**
-     * 物料大小
-     */
+    /** 物料大小 */
     @Basic
     @Column(name = "size", nullable = false)
     private Long size;
 
-    /**
-     * 持续时常，只有视频不为0
-     */
+    /** 持续时长, 只有视频不为0 */
     @Basic
     @Column(name = "duration", nullable = false)
     private Integer duration;
 
-    /**
-     * 审核状态
-     */
+    /** 审核状态 */
     @Basic
     @Column(name = "audit_status", nullable = false)
     private Integer auditStatus;
@@ -67,9 +59,6 @@ public class Creative {
     @Column(name = "user_id", nullable = false)
     private Long userId;
 
-    /**
-     * 物料获取地址
-     */
     @Basic
     @Column(name = "url", nullable = false)
     private String url;
@@ -79,6 +68,6 @@ public class Creative {
     private Date createTime;
 
     @Basic
-    @Column(name = "update_time", nullable = false)
+    @Column(name = "updateTime", nullable = false)
     private Date updateTime;
 }

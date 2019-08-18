@@ -12,6 +12,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "creative_unit")
 public class CreativeUnit {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)

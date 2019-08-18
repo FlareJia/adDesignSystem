@@ -13,7 +13,6 @@ public class PreRequestFilter extends ZuulFilter {
 
     @Override
     public String filterType() {
-
         return FilterConstants.PRE_TYPE;
     }
 
@@ -29,8 +28,11 @@ public class PreRequestFilter extends ZuulFilter {
 
     @Override
     public Object run() throws ZuulException {
+
         RequestContext ctx = RequestContext.getCurrentContext();
         ctx.set("startTime", System.currentTimeMillis());
+
         return null;
     }
 }
+

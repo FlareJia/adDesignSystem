@@ -13,6 +13,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "ad_unit_keyword")
 public class AdUnitKeyword {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)

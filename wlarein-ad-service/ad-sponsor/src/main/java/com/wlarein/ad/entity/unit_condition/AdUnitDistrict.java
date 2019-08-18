@@ -12,6 +12,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "ad_unit_district")
 public class AdUnitDistrict {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)

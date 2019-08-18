@@ -9,7 +9,7 @@ public enum CreativeMetrialType {
 
     MP4(3, "mp4"),
     AVI(4, "avi"),
-    
+
     TXT(5, "txt");
 
     private int type;

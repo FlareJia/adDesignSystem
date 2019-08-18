@@ -14,6 +14,7 @@ import java.util.Date;
 @Entity
 @Table(name = "ad_plan")
 public class AdPlan {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -47,12 +48,14 @@ public class AdPlan {
     @Column(name = "update_time", nullable = false)
     private Date updateTime;
 
-    public AdPlan(Long userId, String planName, Date startDate, Date endDate) {
+    public AdPlan(Long userId, String planName,
+                  Date startDate, Date endDate) {
+
         this.userId = userId;
         this.planName = planName;
+        this.planStatus = CommonStatus.VALID.getStatus();
         this.startDate = startDate;
         this.endDate = endDate;
-        this.planStatus = CommonStatus.VALID.getStatus();
         this.createTime = new Date();
         this.updateTime = this.createTime;
     }

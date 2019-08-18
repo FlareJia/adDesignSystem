@@ -13,7 +13,8 @@ import java.util.Date;
 @AllArgsConstructor
 @Entity
 @Table(name = "ad_unit")
-public class Adunit {
+public class AdUnit {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -31,6 +32,7 @@ public class Adunit {
     @Column(name = "unit_status", nullable = false)
     private Integer unitStatus;
 
+    /** 广告位类型(开屏, 贴片, 中贴...) */
     @Basic
     @Column(name = "position_type", nullable = false)
     private Integer positionType;
@@ -47,7 +49,8 @@ public class Adunit {
     @Column(name = "update_time", nullable = false)
     private Date updateTime;
 
-    public Adunit(Long planId, String unitName, Integer positionType, Long budget) {
+    public AdUnit(Long planId, String unitName,
+                  Integer positionType, Long budget) {
         this.planId = planId;
         this.unitName = unitName;
         this.unitStatus = CommonStatus.VALID.getStatus();
