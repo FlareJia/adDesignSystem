@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0c33b1ad-dca0-451e-92f7-0da049ee1bf6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wlarein-ad-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/wlarein-ad-service/pom.xml" afterDir="false" />
-    </list>
+    <list default="true" id="0c33b1ad-dca0-451e-92f7-0da049ee1bf6" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/ad-eureka/target/" />
@@ -24,44 +19,6 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wlarein-ad-service/ad-search/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="111" column="21" selection-start-line="111" selection-start-column="21" selection-end-line="111" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wlarein-ad-service/ad-search/src/main/java/com/wlarein/ad/SearchApplication.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="29" column="34" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="34" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#101#102#0" expanded="true" />
-                <element signature="e#124#125#0" expanded="true" />
-                <element signature="e#1098#1099#0" expanded="true" />
-                <element signature="e#1123#1124#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wlarein-ad-service/ad-search/src/main/java/com/wlarein/ad/controller/SearchController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="265">
-              <caret line="31" column="29" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#724#748#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wlarein-ad-service/ad-search/src/main/java/com/wlarein/ad/client/SponsorClientHystrix.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="195">
@@ -73,11 +30,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wlarein-ad-service/ad-search/src/main/java/com/wlarein/ad/client/SponsorClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="86" selection-start-line="12" selection-start-column="86" selection-end-line="12" selection-end-column="86" />
+            <state relative-caret-position="270">
+              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -86,28 +43,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wlarein-ad-service/ad-common/pom.xml">
+        <entry file="file://$PROJECT_DIR$/wlarein-ad-service/ad-search/src/main/java/com/wlarein/ad/index/IndexAware.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="24" selection-end-column="21" />
+            <state relative-caret-position="150">
+              <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wlarein-ad-service/ad-search/src/main/resources/application.yml">
+        <entry file="file://$PROJECT_DIR$/wlarein-ad-service/ad-search/src/main/java/com/wlarein/ad/index/adPlan/AdPlanObject.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="32" selection-start-line="32" selection-end-line="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wlarein-ad-service/ad-search/src/main/java/com/wlarein/ad/client/vo/AdPlanGetRequest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+            <state relative-caret-position="69">
+              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -116,10 +64,24 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wlarein-ad-service/ad-search/src/main/java/com/wlarein/ad/client/vo/AdPlan.java">
+        <entry file="file://$PROJECT_DIR$/wlarein-ad-service/ad-search/src/main/java/com/wlarein/ad/index/adPlan/AdPlanIndex.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+            <state>
+              <caret column="29" selection-start-column="29" selection-end-column="29" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#832#833#0" expanded="true" />
+                <element signature="e#859#860#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wlarein-ad-service/ad-search/src/main/java/com/wlarein/ad/index/adunit/AdUnitObject.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="363">
+              <caret line="34" column="60" selection-start-line="34" selection-start-column="60" selection-end-line="34" selection-end-column="60" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -128,10 +90,53 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wlarein-ad-service/ad-sponsor/pom.xml">
+        <entry file="file://$PROJECT_DIR$/wlarein-ad-service/ad-search/src/main/java/com/wlarein/ad/index/adunit/AdUnitIndex.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="421">
-              <caret line="76" column="27" selection-start-line="76" selection-start-column="27" selection-end-line="76" selection-end-column="27" />
+            <state relative-caret-position="345">
+              <caret line="23" column="34" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="34" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#496#497#0" expanded="true" />
+                <element signature="e#537#538#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wlarein-ad-service/ad-search/src/main/java/com/wlarein/ad/index/keyword/UnitKeywoedObject.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" column="27" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/wlarein-ad-service/ad-search/src/main/java/com/wlarein/ad/index/keyword/UnitKeywordIndex.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="678">
+              <caret line="74" column="59" selection-start-line="74" selection-start-column="59" selection-end-line="74" selection-end-column="59" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1667#1668#0" expanded="true" />
+                <element signature="e#1693#1694#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wlarein-ad-service/ad-search/src/main/java/com/wlarein/ad/utils/CommonUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="58" selection-start-line="7" selection-start-column="58" selection-end-line="7" selection-end-column="58" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -159,14 +164,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/wlarein-ad-service/ad-sponsor/src/main/java/com/wlarein/ad/dao/AdUserRepository.java" />
-        <option value="$PROJECT_DIR$/wlarein-ad-service/ad-sponsor/src/main/java/com/wlarein/ad/dao/CreativeRepository.java" />
-        <option value="$PROJECT_DIR$/wlarein-ad-service/ad-sponsor/src/main/java/com/wlarein/ad/entity/unit_condition/AdUnitDistrict.java" />
-        <option value="$PROJECT_DIR$/wlarein-ad-service/ad-sponsor/src/main/java/com/wlarein/ad/entity/unit_condition/AdUnitIt.java" />
-        <option value="$PROJECT_DIR$/wlarein-ad-service/ad-sponsor/src/main/java/com/wlarein/ad/entity/unit_condition/AdUnitKeyword.java" />
-        <option value="$PROJECT_DIR$/wlarein-ad-service/ad-sponsor/src/main/java/com/wlarein/ad/entity/unit_condition/CreativeUnit.java" />
-        <option value="$PROJECT_DIR$/wlarein-ad-service/ad-sponsor/src/main/java/com/wlarein/ad/entity/AdPlan.java" />
-        <option value="$PROJECT_DIR$/wlarein-ad-service/ad-sponsor/src/main/java/com/wlarein/ad/entity/AdUnit.java" />
         <option value="$PROJECT_DIR$/wlarein-ad-service/ad-sponsor/src/main/java/com/wlarein/ad/entity/AdUser.java" />
         <option value="$PROJECT_DIR$/wlarein-ad-service/ad-sponsor/src/main/java/com/wlarein/ad/entity/Creative.java" />
         <option value="$PROJECT_DIR$/wlarein-ad-service/ad-sponsor/src/main/java/com/wlarein/ad/service/impl/AdPlanServiceImpl.java" />
@@ -210,6 +207,14 @@
         <option value="$PROJECT_DIR$/wlarein-ad-service/ad-search/src/main/java/com/wlarein/ad/controller/SearchController.java" />
         <option value="$PROJECT_DIR$/wlarein-ad-service/ad-search/src/main/java/com/wlarein/ad/client/SponsorClientHystrix.java" />
         <option value="$PROJECT_DIR$/wlarein-ad-service/ad-search/src/main/java/com/wlarein/ad/client/SponsorClient.java" />
+        <option value="$PROJECT_DIR$/wlarein-ad-service/ad-search/src/main/java/com/wlarein/ad/index/IndexAware.java" />
+        <option value="$PROJECT_DIR$/wlarein-ad-service/ad-search/src/main/java/com/wlarein/ad/index/adPlan/AdPlanObject.java" />
+        <option value="$PROJECT_DIR$/wlarein-ad-service/ad-search/src/main/java/com/wlarein/ad/index/adPlan/AdPlanIndex.java" />
+        <option value="$PROJECT_DIR$/wlarein-ad-service/ad-search/src/main/java/com/wlarein/ad/index/adunit/AdUnitObject.java" />
+        <option value="$PROJECT_DIR$/wlarein-ad-service/ad-search/src/main/java/com/wlarein/ad/index/adunit/AdUnitIndex.java" />
+        <option value="$PROJECT_DIR$/wlarein-ad-service/ad-search/src/main/java/com/wlarein/ad/index/keyword/UnitKeywoedObject.java" />
+        <option value="$PROJECT_DIR$/wlarein-ad-service/ad-search/src/main/java/com/wlarein/ad/utils/CommonUtils.java" />
+        <option value="$PROJECT_DIR$/wlarein-ad-service/ad-search/src/main/java/com/wlarein/ad/index/keyword/UnitKeywordIndex.java" />
       </list>
     </option>
   </component>
@@ -292,7 +297,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="ad" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="index" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="wlarein-ad-spring-cloud" type="b2602c69:ProjectViewProjectNode" />
@@ -303,7 +308,8 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="ad" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="index" type="462c0819:PsiDirectoryNode" />
+              <item name="keyword" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -320,7 +326,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1566227358756" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1566311419725" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -404,12 +410,12 @@
       <workItem from="1565628348350" duration="10414000" />
       <workItem from="1565783613412" duration="3835000" />
       <workItem from="1566019295825" duration="4079000" />
-      <workItem from="1566027042342" duration="38219000" />
+      <workItem from="1566027042342" duration="43127000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59197000" />
+    <option name="totallyTimeSpent" value="64105000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -433,8 +439,8 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32891566" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -464,68 +470,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/wlarein-ad-service/ad-sponsor/src/main/java/com/wlarein/ad/service/IUserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wlarein-ad-service/ad-sponsor/src/main/java/com/wlarein/ad/utils/CommonUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="32" selection-start-line="32" selection-end-line="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wlarein-ad-service/ad-sponsor/src/main/java/com/wlarein/ad/vo/AdPlanRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="35" column="1" selection-start-line="35" selection-start-column="1" selection-end-line="35" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wlarein-ad-service/ad-sponsor/src/main/java/com/wlarein/ad/vo/AdPlanResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wlarein-ad-service/ad-sponsor/src/main/java/com/wlarein/ad/vo/AdUnitDistrictRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wlarein-ad-service/ad-sponsor/src/main/java/com/wlarein/ad/vo/AdUnitDistrictResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wlarein-ad-service/ad-sponsor/src/main/java/com/wlarein/ad/vo/AdUnitItRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="23" column="1" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wlarein-ad-service/ad-sponsor/src/main/java/com/wlarein/ad/vo/AdUnitItResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wlarein-ad-service/ad-sponsor/src/main/java/com/wlarein/ad/vo/AdUnitKeywordRequest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -873,10 +817,93 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wlarein-ad-service/ad-search/src/main/java/com/wlarein/ad/client/SponsorClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="86" selection-start-line="12" selection-start-column="86" selection-end-line="12" selection-end-column="86" />
+        <state relative-caret-position="270">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wlarein-ad-service/ad-search/src/main/java/com/wlarein/ad/index/IndexAware.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wlarein-ad-service/ad-search/src/main/java/com/wlarein/ad/index/adPlan/AdPlanObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wlarein-ad-service/ad-search/src/main/java/com/wlarein/ad/index/adunit/AdUnitObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="34" column="60" selection-start-line="34" selection-start-column="60" selection-end-line="34" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wlarein-ad-service/ad-search/src/main/java/com/wlarein/ad/index/adPlan/AdPlanIndex.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="29" selection-start-column="29" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#832#833#0" expanded="true" />
+            <element signature="e#859#860#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wlarein-ad-service/ad-search/src/main/java/com/wlarein/ad/index/adunit/AdUnitIndex.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="34" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#496#497#0" expanded="true" />
+            <element signature="e#537#538#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wlarein-ad-service/ad-search/src/main/java/com/wlarein/ad/index/keyword/UnitKeywoedObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="27" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wlarein-ad-service/ad-search/src/main/java/com/wlarein/ad/utils/CommonUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="58" selection-start-line="7" selection-start-column="58" selection-end-line="7" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wlarein-ad-service/ad-search/src/main/java/com/wlarein/ad/index/keyword/UnitKeywordIndex.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="678">
+          <caret line="74" column="59" selection-start-line="74" selection-start-column="59" selection-end-line="74" selection-end-column="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1667#1668#0" expanded="true" />
+            <element signature="e#1693#1694#0" expanded="true" />
           </folding>
         </state>
       </provider>
