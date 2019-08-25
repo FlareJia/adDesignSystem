@@ -1,4 +1,4 @@
-package com.wlarein.ad.index.keyword;
+package com.wlarein.ad.dump.table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UnitKeywoedObject {
+public class AdUnitKeywordTable {
     private Long unitId;
-    private String Keyword;
+    private String keyword;
 }
