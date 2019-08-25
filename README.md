@@ -13,19 +13,19 @@ Kafka 2.1.0
 ------------------------------------------------------------------------------------------------------------------------
 # 广告系统实现的功能：
 ## 1.广告主的广告投放
-  ### 1.1 推广计划
-  ### 1.2 推广单元
+    1.1 推广计划
+    1.2 推广单元
 
 ## 2.媒体方的曝光
-  ### 计费方式：
-  ### 2.1 CPM cost per million
-  ### 2.2 CPT cost per time
-  ### 2.3 CPC cost per click
+    计费方式：
+    2.1 CPM cost per million
+    2.2 CPT cost per time
+    2.3 CPC cost per click
   
 ## 3.广告系统的扩展
-  ### 3.1 采用更多维度
-  ### 3.2 用户画像
-  ### 3.3 AI
+    3.1 采用更多维度
+    3.2 用户画像
+    3.3 AI
   
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -65,20 +65,20 @@ Kafka 2.1.0
   
 ## 4.Spring boot
   ### 4.1 IOC
-   1)读取Bean配置信息： XML(Bean)、Java类@Configuration、注解@Autowire（定义bean之间的依赖关系，同时也是配置信息）
-   2)根据bean注册表去实例化bean：bean1 @Component、bean2 @Service、bean3 @Repository
-   3)将bean实例放到容器中
-   4)应用程序使用
+    1)读取Bean配置信息： XML(Bean)、Java类@Configuration、注解@Autowire（定义bean之间的依赖关系，同时也是配置信息）
+    2)根据bean注册表去实例化bean：bean1 @Component、bean2 @Service、bean3 @Repository
+    3)将bean实例放到容器中
+    4)应用程序使用
   ### 4.2 SpringMVC
-   1)client发送http请求给DispatchServlet（servlet.xml）
-   2)DispatchServlet寻找处理器，到了HandlerMapping
-   3)DispatchServlet调用处理器，到了Controller
-   4)Controller调用业务处理服务，到了Service
-   5)得到处理结果，从ModelAndView传给DispatchServlet
-   6)同时处理视图映射，到了ViewResolver
-   7)处理结果从DisoatchServlet传到Model进行渲染
-   8)之后Model将模型数据传到View
-   9)最后View将Http响应返回给client
+    1)client发送http请求给DispatchServlet（servlet.xml）
+    2)DispatchServlet寻找处理器，到了HandlerMapping
+    3)DispatchServlet调用处理器，到了Controller
+    4)Controller调用业务处理服务，到了Service
+    5)得到处理结果，从ModelAndView传给DispatchServlet
+    6)同时处理视图映射，到了ViewResolver
+    7)处理结果从DisoatchServlet传到Model进行渲染
+    8)之后Model将模型数据传到View
+    9)最后View将Http响应返回给client
  
 ## 5.广告投放系统数据表设计
   ### 5.1 四个概念：用户账户、推广计划<-- 一对多 -->推广单元<-- 多对多 -->创意
@@ -96,42 +96,48 @@ Kafka 2.1.0
 -------------------------------------------------------------------------------------------------------------------------------------------------
 # MySQL Binlog
 ## 1.Binlog：
-Binlog即二进制日志，记录对数据发生或潜在发生更改的SQL语句，并以二进制的形式保存在磁盘中。
-一般mysql默认不开启Binlog，但在增量备份时必须打开。
+    Binlog即二进制日志，记录对数据发生或潜在发生更改的SQL语句，并以二进制的形式保存在磁盘中。
+    一般mysql默认不开启Binlog，但在增量备份时必须打开。
 
 ## 2.Binlog的作用是：
-有两个主要的作用：复制、恢复和审计
+    有两个主要的作用：
+        1）复制: MySQL的Master-Slave协议，让Slave可以通过监听Binlog实现数据复制，达到数据一致的目的
+        2）恢复：通过mysqlbinlog工具恢复数据
+        3）增量备份
 
 ## 3.Binlog相关的变量：
-log_bin: Binlog开关 / 查看变量：show variables like 'log_bin';
-set global log_bin = ON
+    log_bin: Binlog开关 / 查看变量：show variables like 'log_bin';
+    set global log_bin = ON
 
-binlog_format: Binlog日志格式 / 查看变量： show variables like 'binlog_format';
+    binlog_format: Binlog日志格式 / 查看变量： show variables like 'binlog_format';
 
 ## 4.Binlog日志的三种格式：
-ROW: 仅保存记录被修改的细节，不记录sql语句上下文相关信息
-STATEMENT: 每一条会修改数据的sql都会记录在Binlog中
-MIXED: 以上两种level的混合使用
+    ROW: 仅保存记录被修改的细节，不记录sql语句上下文相关信息
+    STATEMENT: 每一条会修改数据的sql都会记录在Binlog中（只需要记录执行语句的细节和上下文环境，避免了记录每一行的变化，
+    在一些修改记录比较多的情况下相比ROW类型能大大较少Binlog日志量，节约IO，提升性能；还可用于实时还原；同时主从版本可以不一样，
+    从服务器版本可以比主服务器版本高）
+    MIXED: 以上两种level的混合使用
 
 ## 5.管理Binlog相关的SQL语句:
-show master logs; 查看所有Binlog的日志列表
-show master status; 查看最后一个Binlog日志的编号名称，及最后一个事件结束的位置(pos)
-flush logs; 刷新Binlog，此刻开始产生一个新编号的Binlog日志文件
-reset master; 情况所有的Binlog日志
+    show master logs; 查看所有Binlog的日志列表
+    show master status; 查看最后一个Binlog日志的编号名称，及最后一个事件结束的位置(pos)
+    flush logs; 刷新Binlog，此刻开始产生一个新编号的Binlog日志文件
+    reset master; 清空所有的Binlog日志
 
 ## 6.查看Binlog相关的SQL语句：
-(show binlog events [IN 'log_name'] [FROME pos] [LIMIT [offset,] row_count])
+    (show binlog events [IN 'log_name'] [FROME pos] [LIMIT [offset,] row_count])
 
-show binlog events; 查看第一个Binlog日志
-show binlog events in 'binlog.000030'; 查看指定的Binlog日志
-show binlog events in 'binlog.000030' from 931; 从指定的位置开始，查看指定的Binlog日志
-show binlog events in 'binlog.000030' from 931 limit 2; 从指定的位置开始，查看指定的Binlog日志，限制查询的条数
-show binlog events in 'binlog.000030' from 931 limit 1,2; 从指定的位置开始，带有偏移，查看指定的Binlog日志，限制查询的条数
+    show binlog events; 查看第一个Binlog日志
+    show binlog events in 'binlog.000030'; 查看指定的Binlog日志
+    show binlog events in 'binlog.000030' from 931; 从指定的位置开始，查看指定的Binlog日志
+    show binlog events in 'binlog.000030' from 931 limit 2; 从指定的位置开始，查看指定的Binlog日志，限制查询的条数
+    show binlog events in 'binlog.000030' from 931 limit 1,2; 从指定的位置开始，带有偏移，查看指定的Binlog日志，限制查询的条数
 
 ## 7.Binlog中的Event_type:
-7.1 QUERY_EVENT: 与数据无关的操作，begin、drop table、truncate table等
-7.2 TABLE_MAP_EVENT: 记录下一个操作所对应的表信息，存储了数据库名和表名
-7.3 XID_EVENT: 标记事务提交
-7.4 WRITE_ROWS_EVENT: 插入数据，即insert操作
-7.5 UPDATE_ROWS_EVENT: 更新数据，即update操作
-7.6 DELETE_ROWS_EVENT: 删除数据，即delete操作
+    每个Event包含header和data两个部分；header提供了Event的创建时间，哪个服务器等信息，data提供的是针对该Event的具体信息，如具体数据的修改。
+    7.1 QUERY_EVENT: 与数据无关的操作，begin、drop table、truncate table等
+    7.2 TABLE_MAP_EVENT: 记录下一个操作所对应的表信息，存储了数据库名和表名
+    7.3 XID_EVENT: 标记事务提交
+    7.4 WRITE_ROWS_EVENT: 插入数据，即insert操作
+    7.5 UPDATE_ROWS_EVENT: 更新数据，即update操作
+    7.6 DELETE_ROWS_EVENT: 删除数据，即delete操作
