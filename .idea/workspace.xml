@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0c33b1ad-dca0-451e-92f7-0da049ee1bf6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wlarein-ad-service/ad-search/src/main/java/com/wlarein/ad/index/keyword/UnitKeywoedObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/wlarein-ad-service/ad-search/src/main/java/com/wlarein/ad/index/keyword/UnitKeywordObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wlarein-ad-service/ad-search/src/main/java/com/wlarein/ad/utils/CommonUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/wlarein-ad-service/ad-search/src/main/java/com/wlarein/ad/utils/CommonUtils.java" afterDir="false" />
-    </list>
+    <list default="true" id="0c33b1ad-dca0-451e-92f7-0da049ee1bf6" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/ad-eureka/target/" />
@@ -27,8 +22,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="690">
-                <caret line="113" column="21" lean-forward="true" selection-start-line="113" selection-start-column="21" selection-end-line="113" selection-end-column="21" />
+              <first_editor relative-caret-position="-540">
+                <caret line="32" column="12" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
               </first_editor>
               <second_editor />
             </state>
@@ -283,7 +278,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1566708097416" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1566708228486" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -373,12 +368,12 @@
       <workItem from="1565628348350" duration="10414000" />
       <workItem from="1565783613412" duration="3835000" />
       <workItem from="1566019295825" duration="4079000" />
-      <workItem from="1566027042342" duration="60117000" />
+      <workItem from="1566027042342" duration="60339000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81095000" />
+    <option name="totallyTimeSpent" value="81317000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -925,8 +920,8 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="690">
-            <caret line="113" column="21" lean-forward="true" selection-start-line="113" selection-start-column="21" selection-end-line="113" selection-end-column="21" />
+          <first_editor relative-caret-position="-540">
+            <caret line="32" column="12" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
           </first_editor>
           <second_editor />
         </state>
