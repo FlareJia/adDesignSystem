@@ -7,7 +7,7 @@ public class Constant {
 
     private static final String DB_NAME = "wlarein_ad_data";
 
-    private static final class AD_PLAN_TABLE_INFO{
+    public static class AD_PLAN_TABLE_INFO{
 
         public static final String TABLE_NAME = "ad_plan";
 

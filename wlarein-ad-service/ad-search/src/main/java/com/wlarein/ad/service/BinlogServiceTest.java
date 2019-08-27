@@ -7,6 +7,14 @@ import com.github.shyiko.mysql.binlog.event.UpdateRowsEventData;
 import com.github.shyiko.mysql.binlog.event.WriteRowsEventData;
 
 public class BinlogServiceTest {
+    /**
+     * Write-----------
+     * WriteRowsEventData{tableId=79, includedColumns={0, 1, 2, 3, 4, 5, 6, 7}, rows=[
+     *     [10, 10, plan, 1, Tue Jan 01 08:00:00 CST 2019, Tue Jan 01 08:00:00 CST 2019, Tue Jan 01 08:00:00 CST 2019, Tue Jan 01 08:00:00 CST 2019]
+     * ]}
+     */
+    //  Tue Jan 01 08:00:00 CST 2019
+
     public static void main(String[] args) throws Exception{
         // 构造BinaryLogClient，填充MySQL的地址信息
         BinaryLogClient client = new BinaryLogClient(
