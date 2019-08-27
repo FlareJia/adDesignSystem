@@ -1,15 +1,15 @@
 # advertisingDesignAndImplementation
-spring boot and spring cloud implement advertising design
+    spring boot and spring cloud implement advertising design
 # adDesignSystem
 
-条件数据--(请求)-->广告系统--(匹配)-->响应
-
-广告投放系统 广告检索系统 广告计费系统 报表系统 曝光检测系统...
-
-java 1.8 
-mysql 8.0
-spring cloud Finchley(Eureka Zuul Feign ...)
-Kafka 2.1.0
+    条件数据--(多条请求)-->广告系统--(匹配)-->响应
+    广告投放系统 广告检索系统 广告计费系统 报表系统 曝光检测系统...
+##环境
+    java 1.8 
+    mysql 8.0
+    spring cloud Finchley(Eureka Zuul Feign ...)
+    Kafka 2.1.0
+    
 ------------------------------------------------------------------------------------------------------------------------
 # 广告系统实现的功能：
 ## 1.广告主的广告投放
@@ -27,7 +27,6 @@ Kafka 2.1.0
     3.2 用户画像
     3.3 AI
   
-
 ------------------------------------------------------------------------------------------------------------------------
 # SpringCloud
 ## 1.eureka
@@ -92,7 +91,6 @@ Kafka 2.1.0
 ## 1.ad-common/src/main/java/com.wlarein.ad/dump DConstant 下放置了那些需要导出数据的表的常量
 ## 2.ad-common/src/main/java/com.wlarein.ad/dump/table 下放置了那些导出数据的表中的属性
   
-
 -------------------------------------------------------------------------------------------------------------------------------------------------
 # MySQL Binlog
 ## 1.Binlog：
