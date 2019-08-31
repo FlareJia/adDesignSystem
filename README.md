@@ -1,14 +1,15 @@
 # advertisingDesignAndImplementation
     spring boot and spring cloud implement advertising design
-# adDesignSystem
 
     条件数据--(多条请求)-->广告系统--(匹配)-->响应
     广告投放系统 广告检索系统 广告计费系统 报表系统 曝光检测系统...
+
 ## 环境
     java 1.8 
     mysql 8.0
     spring cloud Finchley(Eureka Zuul Feign ...)
     Kafka 2.1.0
+
 ## 结构：
                (Eureka Server<--->Eureka Server<--->Eureka Server)
                                         ^️
@@ -34,7 +35,25 @@
                                                            |        |
                                                            |        |
                                                          kafka     ....
-                                                              (Binlog多维度分发)                             
+                                                              (Binlog多维度分发)  
+ 
+## 架构：
+    广告主 的计费方式有 CPM、CPC、CPT等
+    广告主 投放广告 到广告投放系统（推广计划、推广单元、推广限制、广告创意）
+    广告投放系统的数据 存储到 MySQL数据库
+    
+    媒体方 通过检索 广告检索系统（广告数据索引（全量索引（广告主一开始投放的广告）、增量索引（伪装为slave））、广告检索服务）得到服务
+
+## 代码架构：
+    spring-cloud:
+        eureka
+        gateway
+        adservice
+            common
+            dashboard
+            search
+            sponsor
+            
 ------------------------------------------------------------------------------------------------------------------------
 # 广告系统实现的功能：
 ## 1.广告主的广告投放
@@ -51,6 +70,13 @@
     3.1 采用更多维度
     3.2 用户画像
     3.3 AI
+## 4.真实广告系统
+    广告投放系统
+    广告检索系统
+    曝光检测系统
+    扣费系统
+    报表系统
+    等等。。。
   
 ------------------------------------------------------------------------------------------------------------------------
 # SpringCloud
@@ -76,17 +102,39 @@
     API-Gateway方式：业务接口通过API网关暴露，是所有客户端接口的唯一入口。微服务之间的通信也通过API网关（Zuul）
   ### 2.2 Zuul作为网关
     Zuul的生命周期：filters{Pre Routing Post Error Costom}
-    网关可以用来做权限校验
+    HTTP Request 发送给Pre filters -> Routing filters -> Post filters
+    Routing filters 和 Service交互   
+    网关是整个系统的入口，实现流量(路由)分发的功能，所以不可以做耗时的功能在里面
+    网关可以用来做权限校验（网关里面通过Feign调用微服务的功能，来判断请求是否继续下发或直接拒绝）、接口访问（频率，响应时间，请求元数据日志等）统计、流量控制（重复提交，限流）
  
 ## 3.ad-common模块
   ### 3.1 通用代码定义、配置定义
+    即统一配置
   ### 3.2 统一的响应处理
     advice包用于控制器拦截,Advice在spring中就是对xx功能增强
     @RestControllerAdvice(ControllerAdvice)就是对控制器增强，之所以使用RestControllerAdvice，是因为我们对外提供的都是Rest接口(json)
     我们需要对Controller返回内容做一些额外的工作，即功能增强，就需要利用到这个注解。
     如果对Controller的处理过程比较复杂，根据处理的分类，可以制定多个ResponseBodyAdvice，并使用@Order制定处理顺序
   ### 3.3 统一的异常处理
-  
+    1)不直接展示错误，对用户友好
+    2)异常分类，便于排查问题进行DEBUG
+    3)降低业务代码中对异常处理的耦合
+  ### 代码结构
+    vo包:存储统一响应对象
+    advice包:存储控制器拦截 
+    exception包:统一异常处理
+    conf包:统一配置
+  ### 疑问
+    1)CommonResponse实现Serializable序列化接口是高数JVM这个对象是可以序列化的。（需要序列化的情况可能是需要存储到文本文件中、通过Socket传递对象等等）
+    实现Serializable是考虑到将来可能的扩展存储。
+    2)CommonResponseDataAdvice类中的MethodParameter这个类的作用是来保存方法的参数，包含类型、坐标（第几个参数）、注解发现、参数名等等。
+    在代码中，我们需要通过MethodParameter知道定义的类或方法是否加了@IgnoreResponseAdvice注解（可以用在方法和类上）。
+    而supports返回true代表需要统一的响应，返回false代表不需要统一的响应。
+    3)<T>和<?>有着不同的使用场景：<T>用来"声明"一个泛型类或泛型方法；而<?>则用来"使用"泛型类或泛型方法。
+    即<T>是定义类或方法时声明的，<?>是调用时传入的。
+    4)响应对象统一格式的好处：
+        与前端和客户端保持统一，拥有统一的结构，方便前端和客户端的统一处理，在程序出错时，可以直接显示错误信息
+        日志结构的统一，响应是统一的，日志结构也就统一了
 ## 4.Spring boot
   ### 4.1 IOC
     1)读取Bean配置信息： XML(Bean)、Java类@Configuration、注解@Autowire（定义bean之间的依赖关系，同时也是配置信息）

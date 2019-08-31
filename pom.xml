@@ -52,7 +52,7 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
+    <!-- 远程仓库 -->
     <repositories>
         <repository>
             <id>spring-milestones</id>

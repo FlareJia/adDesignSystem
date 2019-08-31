@@ -14,6 +14,7 @@ import java.util.List;
 public class WebConfiguration implements WebMvcConfigurer {
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+        //将converts清空，我们只用到MappingJackson2HttpMessageConverter()
         converters.clear();
         // 能够将java对象转换为json对象
         converters.add(new MappingJackson2HttpMessageConverter());

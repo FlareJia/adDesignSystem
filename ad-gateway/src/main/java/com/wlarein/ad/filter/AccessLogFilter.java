@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
  * 自定义 Zuul 的 filter 时，需要继承 ZuulFilter 抽象类，其中 filterOrder 定义了过滤器执行的顺序，数值越小，优先级越高。
  * 因为内置的响应过滤器优先级定义为常量 FilterConstants.SEND_RESPONSE_FILTER_ORDER，所以，我们需要在响应返回之前执行我们自定义的过滤器。
  * 最好的方式就是将这个常量减去 1。
- * Created by Qinyi.
+ *
  */
 @Slf4j
 @Component

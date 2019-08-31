@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * 对异常进行拦截
+ */
 @RestControllerAdvice
 public class GlobalExceptionAdvice {
     /**
