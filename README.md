@@ -135,27 +135,107 @@
     4)响应对象统一格式的好处：
         与前端和客户端保持统一，拥有统一的结构，方便前端和客户端的统一处理，在程序出错时，可以直接显示错误信息
         日志结构的统一，响应是统一的，日志结构也就统一了
+        
 ## 4.Spring boot
   ### 4.1 IOC
     1)读取Bean配置信息： XML(Bean)、Java类@Configuration、注解@Autowire（定义bean之间的依赖关系，同时也是配置信息）
-    2)根据bean注册表去实例化bean：bean1 @Component、bean2 @Service、bean3 @Repository
-    3)将bean实例放到容器中
+    2)根据bean注册表去实例化bean：bean1 @Component、bean2 @Service、bean3 @Repository ...
+    3)将bean实例放到容器中（Spring容器，Bean缓存池，Bean定义注册表）
     4)应用程序使用
   ### 4.2 SpringMVC
     1)client发送http请求给DispatchServlet（servlet.xml）
-    2)DispatchServlet寻找处理器，到了HandlerMapping
-    3)DispatchServlet调用处理器，到了Controller
-    4)Controller调用业务处理服务，到了Service
+    2)DispatchServlet寻找处理器，通过HandlerMapping定位到具体的Controller
+    3)DispatchServlet调用处理器，提交请求给具体的Controller
+    4)Controller调用业务处理服务，调用业务逻辑Service
     5)得到处理结果，从ModelAndView传给DispatchServlet
     6)同时处理视图映射，到了ViewResolver
     7)处理结果从DisoatchServlet传到Model进行渲染
     8)之后Model将模型数据传到View
     9)最后View将Http响应返回给client
- 
-## 5.广告投放系统数据表设计
-  ### 5.1 四个概念：用户账户、推广计划<-- 一对多 -->推广单元<-- 多对多 -->创意
-  ### 5.2 推广单元：关键词限制、地域限制、兴趣限制
-  
+  ### 疑问
+    @Autowire和@Resource的区别：
+    1）@Autowire是Spring开发的，@Resource是jdk开发的
+    2）@Autowire是按照type来注入的，而@Resource是按照名称来注入的，如果名称找不到，那么就按照type。对于一个接口，如果有多个实现，那么就必须使用@Resource注入，并指定需要注入的实现类
+    @Autowire实现了依赖对象的自动装配，而自动装配的各个Bean都是在Spring容器启动时自动配置好的，并一直保持在Spring容器中。
+    
+    关于注解一些信息：
+    1）@Repository注解用于将数据访问层（DAO层）的类标识为Spring Bean
+    2）@Component注解是一个泛化的概念，仅仅表示一个组件（Bean），可以作用在任何层次
+    3）@Controller通常作用在控制层，但是目前该功能与@Component相同
+    4）@Service通常作用在业务层，但是目前该功能与@Component相同
+    通过在类上使用@Repository，@Component，@Controller，@Service注解，Spring会自动创建相应的BeanDefinition对象，并注册到ApplicationContext中
+    
+  ## 5.广告投放系统数据表设计
+  ### 5.1 四个概念：
+    用户账户、推广计划<-- 一对多 -->推广单元<-- 多对多 -->创意
+  ### 5.2 推广单元：
+    关键词限制、地域限制、兴趣限制
+  ### 5.3 表结构：
+    用户表ad_user：
+    username 账户名称
+    token 账户token
+    user_status 账户状态
+    create_time 创建时间
+    update_time 更新时间
+    
+    推广计划ad_plan:
+    user_id 标记当前记录所属用户
+    plan_name 推广计划名称
+    plan_status 推广计划状态
+    start_date 推广计划开始时间
+    end_date 推广计划结束时间
+    create_time 创建时间
+    update_time 更新时间
+    
+    推广单元ad_unit:
+    plan_id 关联的推广计划id
+    unit_name 推广单元名称
+    unit_status 推广单元状态
+    position_type 广告位类型（开屏、贴片等）
+    budget 预算
+    create_time 创建时间
+    update_time 更新时间
+    
+    限制表：
+    {
+        关键词限制ad_unit_keyword：
+        unit_id 关联的推广单元id
+        keyword 关键词
+    
+        地域限制ad_unit_district:
+        unit_id 关联的推广单元id
+        province 省
+        city 市
+    
+        兴趣限制ad_unit_it:
+        unit_id 关联的推广单元id
+        it_tag 兴趣标签
+    }
+    
+    创意表ad_creative：
+    name 创意名称
+    type 物料类型（图片、视频）
+    material_type 物料子类型（bmp、avi）
+    height 高度
+    width 宽度
+    size 物料大小，单位KB
+    duration 持续时常，视频不为0
+    audit_status 审核状态
+    user_id 标记当前所属用户
+    url 物料地址
+    create_time 创建时间
+    update_time 更新时间
+    
+    创意与推广单元关联表creative_unit：
+    creative_id 关联的创意id
+    unit_id 关联的推广单元id
+  ### 代码结构：
+    entity包:存放表结构model
+    constant包：存放常量数据
+    dao包：数据获取接口
+    service包：为用户提供服务
+    vo包：存储请求与响应的信息
+    utils包：工具类
 -------------------------------------------------------------------------------------------------------------------------------------------------
 # .加载全量索引
 ## .广告主投放的广告数据，导出放到文件里面

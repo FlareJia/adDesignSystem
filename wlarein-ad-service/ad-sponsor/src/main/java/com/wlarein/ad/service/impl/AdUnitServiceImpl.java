@@ -43,7 +43,9 @@ public class AdUnitServiceImpl implements IAdUnitService {
                              AdUnitRepository unitRepository,
                              AdUnitKeywordRepository unitKeywordRepository,
                              AdUnitItRepository unitItRepository,
-                             AdUnitDistrictRepository unitDistrictRepository, CreativeRepository creativeRepository, CreativeUnitRepository creativeUnitRepository) {
+                             AdUnitDistrictRepository unitDistrictRepository,
+                             CreativeRepository creativeRepository,
+                             CreativeUnitRepository creativeUnitRepository) {
         this.planRepository = planRepository;
         this.unitRepository = unitRepository;
         this.unitKeywordRepository = unitKeywordRepository;
@@ -61,6 +63,11 @@ public class AdUnitServiceImpl implements IAdUnitService {
             throw new AdException(Constants.ErrorMsg.REQUEST_PARAM_ERROR);
         }
 
+        /**
+         * JAVA8新特性 Optional类
+         * Optional 类是一个可以为null的容器对象。如果值存在则isPresent()方法会返回true，调用get()方法会返回该对象。
+         * Optional 类的引入很好的解决空指针异常。
+         */
         Optional<AdPlan> adPlan =
                 planRepository.findById(request.getPlanId());
         if (!adPlan.isPresent()) {
@@ -166,7 +173,7 @@ public class AdUnitServiceImpl implements IAdUnitService {
                 .map(CreativeUnitRequest.CreativeUnitItem::getCreativeId)
                 .collect(Collectors.toList());
 
-        if (!(isRelatedUnitExist(unitIds) && isRelatedUnitExist(creativeIds))) {
+        if (!(isRelatedUnitExist(unitIds) && isRelatedCreativeExist(creativeIds))) {
             throw new AdException(Constants.ErrorMsg.REQUEST_PARAM_ERROR);
         }
 
