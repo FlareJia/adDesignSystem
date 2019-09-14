@@ -13,7 +13,9 @@ import java.util.function.Supplier;
 
 @Slf4j
 public class CommonUtils {
+    // 传进去一个map，若map的key不存在的情况下，就用factory返回一个新的对象
     public static <K, V> V getorCreate(K key, Map<K, V> map, Supplier<V> factory){
+        // computeIfAbsent方法有两个参数，第一个参数是想要获取的map的key，获取不到的时候才会执行第二个参数指向的表达式
         return map.computeIfAbsent(key, k -> factory.get());
     }
 

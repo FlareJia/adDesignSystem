@@ -9,7 +9,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentSkipListSet;
-
+/**
+ * 索引实现，实现IndexAware
+ */
 @Slf4j
 @Component
 public class UnitDistrictIndex implements IndexAware<String, Set<Long>> {

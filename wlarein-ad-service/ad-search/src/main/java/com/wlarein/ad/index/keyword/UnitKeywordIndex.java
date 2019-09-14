@@ -13,11 +13,15 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentSkipListSet;
-
+/**
+ * 索引实现，实现IndexAware
+ */
 @Slf4j
 @Component
 public class UnitKeywordIndex implements IndexAware<String, Set<Long>> {
+    // keyword到Unit的索引，倒排索引
     private static Map<String, Set<Long>> keywordUnitMap;
+    // unit到keyword的索引，正向索引
     private static Map<Long, Set<String>> unitKeywordMap;
 
     static {
@@ -41,10 +45,12 @@ public class UnitKeywordIndex implements IndexAware<String, Set<Long>> {
     @Override
     public void add(String key, Set<Long> value) {
         log.info("UnitKeywordIndex, before add: {}", unitKeywordMap);
-
+        // 同样，更新的时候需要线程安全
+        // 更新倒排索引
         Set<Long> unitIdSet = CommonUtils.getorCreate(key, keywordUnitMap, ConcurrentSkipListSet::new);
         unitIdSet.addAll(value);
 
+        // 更新正向索引
         for(Long unitId : value){
             Set<String> keywordSet = CommonUtils.getorCreate(unitId, unitKeywordMap, ConcurrentSkipListSet::new);
             keywordSet.add(key);
@@ -69,9 +75,11 @@ public class UnitKeywordIndex implements IndexAware<String, Set<Long>> {
         }
         log.info("UnitKeyWordIndex, after delete: {}", unitKeywordMap);
     }
+    // 匹配方法，推广单元和关键词的匹配
     public boolean match(Long unitId, List<String> keywords){
         if(unitKeywordMap.containsKey(unitId) && CollectionUtils.isNotEmpty(unitKeywordMap.get(unitId))){
             Set<String> unitKeywords = unitKeywordMap.get(unitId);
+            // 当keywords 是 unitKeywords 的 子集合时返回true
             return CollectionUtils.isSubCollection(keywords, unitKeywords);
         }
         return false;

@@ -252,22 +252,51 @@
     11)kafka
     
   ### 6.2 疑问：
-  1)@EnableHystrix和@EnableCircuitBreaker注解的区别：
-    由@EnableHystrix的源码可知：
-    `
-    @Target(ElementType.TYPE)
-    @Retention(RetentionPolicy.RUNTIME)
-    @Documented
-    @Inherited
-    @EnableCircuitBreaker
-    public @interface EnableHystrix {
-    }
-    `
-    @EnableHystrix是对@EnableCircuitBreaker做了一个包装，功能都为启动熔断功能
+    1)@EnableHystrix和@EnableCircuitBreaker注解的区别：
+        由@EnableHystrix的源码可知：
+        `
+        @Target(ElementType.TYPE)
+        @Retention(RetentionPolicy.RUNTIME)
+        @Documented
+        @Inherited
+        @EnableCircuitBreaker
+        public @interface EnableHystrix {
+        }
+        `
+      @EnableHystrix是对@EnableCircuitBreaker做了一个包装，功能都为启动熔断功能
+  
+  ### 6.3 微服务之间的调用：
+    1)Ribbon方式调用：
+    Ribbon是一个客户端负载均衡器，可以很好的控制HTTP和TCP客户端行为
+    · SearchApplication.java 中完成注入，并标记@LoadBalanced开启负载均衡功能
+    · SearchController.java 中通过RestTemplate调用服务接口，与常见的RestTemplate不同的是，调用使用的不再是ip + port，而是服务名。通过注册中心（Eureka Server）实现。
     
-    
+    2)Feign方式调用：
+    Feign可以实现声明式的Web服务客户端
+    · 通过@FeignClient指定调用的服务名称
+    · 在接口上声明@RequestMapping指明调用服务的地址与请求类型
+    · 通过在@FeignClient中配置fallback指定熔断
+    · 实现接口：SponsorClient.java ， 熔断：SponsorClientHystrix.java   
  
+ 
+## 7. 索引
+    ### 7.1 正向索引：
+        通过唯一键/主键生成与对象的映射关系
+    ### 7.2 倒排索引：
+        它的设计是为了存储全文搜索下某个单词在一个文档或一组文档中存储位置的映射。是在文档检索系统中最常用的数据结构。
+        
+        倒排索引在广告系统中的应用：
+        核心用途是对各个维度限制的"整理"
+    ### 7.3 全量索引：
+        检索系统在启动时一次性读取当前数据库（注意：不能直接从数据库中直接读取，从系统文件中读）中的所有数据，建立索引
+        若是多实例部署的话，每个实例直接从数据库中读取全量数据，会给数据库造成巨大的压力。
+        若是单实例部署的话，直接从数据库中读取数据也是可以接受的。
+        文件中保存的是预先存储的广告数据，可以以任意序列化的方式存储到文件中，在多实例的情况下，这份文件是放到公共的分布式文件系统上的，如NFS或HDFS
+    ### 7.4 增量索引：
+        系统运行过程中，监控数据库变化，即增量，实时加载更新，构建索引
+
 ###
+
 # .加载全量索引
 ## .广告主投放的广告数据，导出放到文件里面
 ## .最好是实现一个子服务用来导出，现在用sponsor里的test来导出，以一种简单方式导出

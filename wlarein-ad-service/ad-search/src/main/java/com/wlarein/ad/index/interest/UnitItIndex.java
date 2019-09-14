@@ -12,13 +12,16 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentSkipListSet;
 
+/**
+ * 索引实现，实现IndexAware
+ */
 @Slf4j
 @Component
 public class UnitItIndex implements IndexAware<String, Set<Long>> {
-    // <itTag, adUnitId set>
+    // <itTag, adUnitId set> 倒排索引 通过兴趣标签去查推广单元
     private static Map<String, Set<Long>> itUnitMap;
 
-    // <unitId, itTag set>
+    // <unitId, itTag set> 正向索引 通过推广单元去查兴趣标签
     private static Map<Long, Set<String>> unitItMap;
 
     static {

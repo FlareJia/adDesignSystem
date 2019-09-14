@@ -6,6 +6,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * 索引对象
+ * 包含AdUnit的基本信息
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

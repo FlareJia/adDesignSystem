@@ -6,6 +6,10 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
+/**
+ * 索引对象
+ * 包含AdPlan的基本信息
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

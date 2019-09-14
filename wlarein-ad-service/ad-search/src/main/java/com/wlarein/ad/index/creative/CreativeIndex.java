@@ -6,7 +6,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-
+/**
+ * 索引实现，实现IndexAware
+ */
 @Component
 @Slf4j
 public class CreativeIndex implements IndexAware<Long, CreativeObject> {

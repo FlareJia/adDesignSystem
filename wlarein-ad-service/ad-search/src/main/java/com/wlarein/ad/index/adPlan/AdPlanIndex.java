@@ -8,13 +8,16 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
+/**
+ * 索引实现，实现IndexAware
+ */
 @Slf4j
 @Component
 public class AdPlanIndex implements IndexAware<Long, AdPlanObject> {
 
 
     private static Map<Long, AdPlanObject> objectMap;
-
+    // 初始化map，索引更新的时候对map操作需要线程安全，故使用ConcurrentHashMap
     static {
         objectMap = new ConcurrentHashMap<>();
     }

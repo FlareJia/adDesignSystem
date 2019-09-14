@@ -7,6 +7,10 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+/**
+ * 实现一个断路器，当调用ad-sponsor中的服务出错时就会服务降级
+ * 并返回一个错误CommonResponse
+ */
 @Component
 public class SponsorClientHystrix implements SponsorClient{
     @Override

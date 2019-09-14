@@ -6,7 +6,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-
+/**
+ * 索引实现，实现IndexAware
+ */
 @Slf4j
 @Component
 public class AdUnitIndex implements IndexAware<Long, AdUnitObject> {
