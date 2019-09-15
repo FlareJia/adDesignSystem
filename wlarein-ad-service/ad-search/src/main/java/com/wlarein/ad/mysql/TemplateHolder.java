@@ -25,6 +25,7 @@ public class TemplateHolder {
 
     private final JdbcTemplate jdbcTemplate;
 
+    // 该句SQL查询了表的列所对应的索引
     private String SQL_SCHEMA = "select table_schema, table_name," +
             " column_name, ordinal_position from information_schema.columns" +
             " where table_schema = ? and table_name = ?";
@@ -43,6 +44,7 @@ public class TemplateHolder {
         return template.getTableTemplateMap().get(tableName);
     }
 
+    // 加载配置文件
     private void loadJson(String path) {
 
         ClassLoader cl = Thread.currentThread().getContextClassLoader();

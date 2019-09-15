@@ -280,23 +280,42 @@
  
  
 ## 7. 索引
-    ### 7.1 正向索引：
+   ### 7.1 正向索引：
         通过唯一键/主键生成与对象的映射关系
-    ### 7.2 倒排索引：
+   ### 7.2 倒排索引：
         它的设计是为了存储全文搜索下某个单词在一个文档或一组文档中存储位置的映射。是在文档检索系统中最常用的数据结构。
         
         倒排索引在广告系统中的应用：
         核心用途是对各个维度限制的"整理"
-    ### 7.3 全量索引：
+   ### 7.3 全量索引：
         检索系统在启动时一次性读取当前数据库（注意：不能直接从数据库中直接读取，从系统文件中读）中的所有数据，建立索引
         若是多实例部署的话，每个实例直接从数据库中读取全量数据，会给数据库造成巨大的压力。
         若是单实例部署的话，直接从数据库中读取数据也是可以接受的。
         文件中保存的是预先存储的广告数据，可以以任意序列化的方式存储到文件中，在多实例的情况下，这份文件是放到公共的分布式文件系统上的，如NFS或HDFS
-    ### 7.4 增量索引：
+   ### 7.4 增量索引：
         系统运行过程中，监控数据库变化，即增量，实时加载更新，构建索引
 
-###
-
+## 8. 导出表数据到文件
+   ### 8.1 数据字段定义：
+        目录结构在ad-common下的dump中
+        表字段只写索引需要用到的字段
+   ### 8.2 将数据先从数据库预先导出到文件中的好处：
+        1)检索系统不需要主动的连接到数据库，即可以不需要知道数据表的定义
+        2)多实例检索系统在启动的时候如果直接从数据库中读取数据，会给数据库造成巨大压力，这样可以避免扫描数据库。
+   ### 8.3 将数据导出到文件：
+        目录结构在ad-sponsor下的test下
+   ### 8.4 通过文件构造索引：
+        读取文件，通过AdPlanIndex.java的add方法即可构造索引
+        目录结构为：ad-search的handler包
+        索引之间存在着层级的划分，也就是依赖关系的划分
+        
+   ### 8.5 疑问：
+        1)如果数据库表中的数据特别多时如何处理：
+        此时最好不要直接在程序中使用findAll，因为这样会瞬间占据JVM中大量内存，同时也会对数据库造成很大压力。
+        解决方法：
+           · 使用mysql自己提供的mysqldump工具，将数据表直接导出为文件，再利用程序做批量解析。
+           · 使用mysql的limit offset语法，每次只取1000条数据，分批取数据，存数据。
+           
 # .加载全量索引
 ## .广告主投放的广告数据，导出放到文件里面
 ## .最好是实现一个子服务用来导出，现在用sponsor里的test来导出，以一种简单方式导出
@@ -304,38 +323,38 @@
 ## 1.ad-common/src/main/java/com.wlarein.ad/dump DConstant 下放置了那些需要导出数据的表的常量
 ## 2.ad-common/src/main/java/com.wlarein.ad/dump/table 下放置了那些导出数据的表中的属性
   
-###
-# MySQL Binlog
-## 1.Binlog：
+  
+## 9. MySQL Binlog
+   ### 9.1 Binlog：
     Binlog即二进制日志，记录对数据发生或潜在发生更改的SQL语句，并以二进制的形式保存在磁盘中。
     一般mysql默认不开启Binlog，但在增量备份时必须打开。
 
-## 2.Binlog的作用是：
+   ### 9.2 Binlog的作用是：
     有两个主要的作用：
         1）复制: MySQL的Master-Slave协议，让Slave可以通过监听Binlog实现数据复制，达到数据一致的目的
         2）恢复：通过mysqlbinlog工具恢复数据
         3）增量备份
 
-## 3.Binlog相关的变量：
+   ### 9.3 Binlog相关的变量：
     log_bin: Binlog开关 / 查看变量：show variables like 'log_bin';
     set global log_bin = ON
 
     binlog_format: Binlog日志格式 / 查看变量： show variables like 'binlog_format';
 
-## 4.Binlog日志的三种格式：
+   ### 9.4 Binlog日志的三种格式：
     ROW: 仅保存记录被修改的细节，不记录sql语句上下文相关信息
     STATEMENT: 每一条会修改数据的sql都会记录在Binlog中（只需要记录执行语句的细节和上下文环境，避免了记录每一行的变化，
     在一些修改记录比较多的情况下相比ROW类型能大大较少Binlog日志量，节约IO，提升性能；还可用于实时还原；同时主从版本可以不一样，
     从服务器版本可以比主服务器版本高）
     MIXED: 以上两种level的混合使用
 
-## 5.管理Binlog相关的SQL语句:
+   ### 9.5 管理Binlog相关的SQL语句:
     show master logs; 查看所有Binlog的日志列表
     show master status; 查看最后一个Binlog日志的编号名称，及最后一个事件结束的位置(pos)
     flush logs; 刷新Binlog，此刻开始产生一个新编号的Binlog日志文件
     reset master; 清空所有的Binlog日志
 
-## 6.查看Binlog相关的SQL语句：
+   ### 9.6 查看Binlog相关的SQL语句：
     (show binlog events [IN 'log_name'] [FROME pos] [LIMIT [offset,] row_count])
 
     show binlog events; 查看第一个Binlog日志
@@ -344,11 +363,11 @@
     show binlog events in 'binlog.000030' from 931 limit 2; 从指定的位置开始，查看指定的Binlog日志，限制查询的条数
     show binlog events in 'binlog.000030' from 931 limit 1,2; 从指定的位置开始，带有偏移，查看指定的Binlog日志，限制查询的条数
 
-## 7.Binlog中的Event_type:
+   ### 9.7 Binlog中的Event_type:
     每个Event包含header和data两个部分；header提供了Event的创建时间，哪个服务器等信息，data提供的是针对该Event的具体信息，如具体数据的修改。
-    7.1 QUERY_EVENT: 与数据无关的操作，begin、drop table、truncate table等
-    7.2 TABLE_MAP_EVENT: 记录下一个操作所对应的表信息，存储了数据库名和表名
-    7.3 XID_EVENT: 标记事务提交
-    7.4 WRITE_ROWS_EVENT: 插入数据，即insert操作
-    7.5 UPDATE_ROWS_EVENT: 更新数据，即update操作
-    7.6 DELETE_ROWS_EVENT: 删除数据，即delete操作
+    1) QUERY_EVENT: 与数据无关的操作，begin、drop table、truncate table等
+    2) TABLE_MAP_EVENT: 记录下一个操作所对应的表信息，存储了数据库名和表名
+    3) XID_EVENT: 标记事务提交
+    4) WRITE_ROWS_EVENT: 插入数据，即insert操作
+    5) UPDATE_ROWS_EVENT: 更新数据，即update操作
+    6) DELETE_ROWS_EVENT: 删除数据，即delete操作

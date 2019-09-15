@@ -2,6 +2,7 @@ package com.wlarein.ad.mysql.constant;
 
 import com.github.shyiko.mysql.binlog.event.EventType;
 
+// 对增量索引或全量索引的操作类型枚举
 public enum OpType {
     ADD,
     UPDATE,

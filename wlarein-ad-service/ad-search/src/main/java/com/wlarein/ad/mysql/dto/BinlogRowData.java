@@ -7,6 +7,9 @@ import lombok.Data;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Binlog到RowData的映射
+ */
 @Data
 public class BinlogRowData {
 

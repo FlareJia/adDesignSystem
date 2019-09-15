@@ -9,6 +9,9 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+/**
+ * 解析binlog文件（template.json的各个表）
+ */
 public class JsonTable {
     private String tableName;
     private Integer level;

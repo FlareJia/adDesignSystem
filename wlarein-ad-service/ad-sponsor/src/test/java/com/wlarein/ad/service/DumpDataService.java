@@ -37,6 +37,7 @@ import java.util.List;
 
 @Slf4j
 @RunWith(SpringRunner.class)
+// 我们在这里没有使用到web环境，故webEnvironment的值为NONE
 @SpringBootTest(classes = {Application.class}, webEnvironment = SpringBootTest.WebEnvironment.NONE)
 
 public class DumpDataService {
@@ -55,6 +56,8 @@ public class DumpDataService {
     @Autowired
     private AdUnitKeywordRepository keywordRepository;
 
+
+    // 这是一个总的方法，将会执行所有导出方法。同时也是一个测试用例
     @Test
     public void dumpAdTableData(){
         dumpAdPlanTable(
@@ -80,13 +83,15 @@ public class DumpDataService {
         );
     }
 
+    // 将表的各个数据导出为JSON格式
 
     private void dumpAdPlanTable(String fileName){
+        // 先拿到数据库中根据条件取所有有效的数据
         List<AdPlan> adPlans = planRepository.findAllByPlanStatus(CommonStatus.VALID.getStatus());
         if(CollectionUtils.isEmpty(adPlans)){
             return;
         }
-
+        // 将取到的数据转换到对应的我们所需要的字段属性
         List<AdPlanTable> planTables = new ArrayList<>();
         adPlans.forEach(p -> planTables.add(
                 new AdPlanTable(
@@ -98,8 +103,10 @@ public class DumpDataService {
                 )
         ));
 
+        // 将转换好的字段属性写入文件
         Path path = Paths.get(fileName);
         try (BufferedWriter writer = Files.newBufferedWriter(path)){
+            // 数据库表中遍历每一行并写入
             for(AdPlanTable planTable : planTables){
                 writer.write(JSON.toJSONString(planTable));
                 writer.newLine();

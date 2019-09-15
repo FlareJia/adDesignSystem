@@ -31,6 +31,9 @@ import java.util.Set;
 @Slf4j
 public class AdLevelDataHandler {
 
+    // 第一层级为用户
+    // 第二层级不与其他索引之间存在着关联关系
+    // 因为从文件中得到的为json数据，故参数1为AdplanTable
     public static void handleLevel2(AdPlanTable planTable, OpType type){
         AdPlanObject planObject = new AdPlanObject(
                 planTable.getId(),
@@ -40,6 +43,7 @@ public class AdLevelDataHandler {
                 planTable.getEndDate()
         );
         handleBinlogEvent(
+                // 获取对应IndexAware，（of方法 索引服务的缓存？？？）
                 DataTable.of(AdPlanIndex.class),
                 planObject.getPlanId(),
                 planObject,
@@ -67,6 +71,7 @@ public class AdLevelDataHandler {
     }
 
     public static void handleLevel3(AdUnitTable unitTable, OpType type){
+        // 先获取AdPlanObject
         AdPlanObject adPlanObject = DataTable.of(AdPlanIndex.class).get(unitTable.getPlanId());
 
         if(null == adPlanObject){
@@ -97,14 +102,14 @@ public class AdLevelDataHandler {
             return;
         }
 
-        AdUnitObject unitobject = DataTable.of(
+        AdUnitObject unitObject = DataTable.of(
                 AdUnitIndex.class
         ).get(creativeUnitTable.getUnitId());
         CreativeObject creativeObject = DataTable.of(
                 CreativeIndex.class
         ).get(creativeUnitTable.getAdId());
 
-        if(null == unitobject || null == creativeObject){
+        if(null == unitObject || null == creativeObject){
             log.error("AdCreativeUnitTable index error: {}", JSON.toJSONString(creativeUnitTable));
             return;
         }
@@ -196,7 +201,8 @@ public class AdLevelDataHandler {
         );
     }
 
-
+    // 索引对象需要一个键和一个值，故返回类型为K，V
+    // 该方法用来处理增量索引的总方法
     private static <K, V> void handleBinlogEvent(IndexAware<K, V> index, K key, V value, OpType type){
         switch (type){
             case ADD:

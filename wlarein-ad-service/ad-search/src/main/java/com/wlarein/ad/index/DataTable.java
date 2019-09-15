@@ -9,6 +9,9 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * DataTable.java 的目的就是为了避免多次注入带来的麻烦！
+ */
 @Component
 public class DataTable implements ApplicationContextAware, PriorityOrdered {
 

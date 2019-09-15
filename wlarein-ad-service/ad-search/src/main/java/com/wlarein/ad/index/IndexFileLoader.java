@@ -16,15 +16,23 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * 根据数据表导出的文件，读取文件，加载索引
+ * 当IndexFileLoader 加载到spring容器中时，init方法就要被执行
+ */
 @Component
+// 组件依赖
 @DependsOn("dataTable")
 public class IndexFileLoader {
 
+    // 全量索引的加载
     @PostConstruct
     public void init(){
+        // 层级之间有依赖关系，所以加载的时候顺序不能改变
         List<String> adPlanStrings = loadDumpData(
                 String.format("%s%s", DConstant.DATA_ROOT_DIR,DConstant.AD_PLAN)
         );
+        //遍历adPlanStrings 用AdLevelDataHandler.handleLevel2实现索引加载
         adPlanStrings.forEach(p -> AdLevelDataHandler.handleLevel2(
                 JSON.parseObject(p, AdPlanTable.class),
                 OpType.ADD

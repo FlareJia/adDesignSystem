@@ -23,6 +23,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/**
+ * 实现监听
+ */
 @Slf4j
 @Component
 public class Aggregationlistener implements BinaryLogClient.EventListener {

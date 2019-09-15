@@ -17,6 +17,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 增量数据监听
+ */
 @Slf4j
 @Component
 public class IncrementListener implements Ilistener {

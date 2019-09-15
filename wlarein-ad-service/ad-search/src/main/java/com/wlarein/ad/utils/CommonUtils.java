@@ -19,6 +19,7 @@ public class CommonUtils {
         return map.computeIfAbsent(key, k -> factory.get());
     }
 
+    // 将字符串连接的方法
     public static String stringConcat(String... args){
         StringBuilder  result = new StringBuilder();
         for(String arg: args){

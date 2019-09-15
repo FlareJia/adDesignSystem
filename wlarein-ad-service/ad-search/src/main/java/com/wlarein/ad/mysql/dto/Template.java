@@ -10,6 +10,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 
+/**
+ * 解析binlog文件（template.json的数据库）
+ */
 public class Template {
 
     private String database;

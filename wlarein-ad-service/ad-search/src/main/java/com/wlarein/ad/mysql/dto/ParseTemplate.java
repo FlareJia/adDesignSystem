@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
+/**
+ * 对模版文件的java对象进行解析
+ */
 @Data
 public class ParseTemplate {
 
@@ -25,9 +28,11 @@ public class ParseTemplate {
             String name = table.getTableName();
             Integer level = table.getLevel();
 
+            // 每一个表都是一个tableTemplate
             TableTemplate tableTemplate = new TableTemplate();
             tableTemplate.setTableName(name);
             tableTemplate.setLevel(level.toString());
+            // 将tableTemplate放到template中
             template.tableTemplateMap.put(name, tableTemplate);
 
             // 遍历操作类型对应的列
