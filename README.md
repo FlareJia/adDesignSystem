@@ -371,3 +371,10 @@
     4) WRITE_ROWS_EVENT: 插入数据，即insert操作
     5) UPDATE_ROWS_EVENT: 更新数据，即update操作
     6) DELETE_ROWS_EVENT: 删除数据，即delete操作
+
+## 10. 增量数据的投递
+   ### 10.1 kafka通用投递：
+    将增量数据投递到kafka，其他子系统对感兴趣的topic进行监听
+    
+## 11. 广告检索服务
+   ### 11.1 

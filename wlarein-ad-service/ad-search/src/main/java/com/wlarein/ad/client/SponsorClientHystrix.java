@@ -12,9 +12,12 @@ import java.util.List;
  * 并返回一个错误CommonResponse
  */
 @Component
-public class SponsorClientHystrix implements SponsorClient{
+public class SponsorClientHystrix implements SponsorClient {
+
     @Override
-    public CommonResponse<List<AdPlan>> getAdPlans(AdPlanGetRequest request) {
-        return new CommonResponse<>(-1, "eureka-client-ad-sponsor error");
+    public CommonResponse<List<AdPlan>> getAdPlans(
+            AdPlanGetRequest request) {
+        return new CommonResponse<>(-1,
+                "eureka-client-ad-sponsor error");
     }
 }

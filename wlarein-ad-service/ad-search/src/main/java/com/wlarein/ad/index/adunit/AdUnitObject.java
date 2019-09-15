@@ -39,4 +39,39 @@ public class AdUnitObject {
             this.adPlanObject = newObject.getAdPlanObject();
         }
     }
+
+    // 判断是否为各种定义的类型
+    private static boolean isKaiPing(int positionType){
+        return (positionType & AdUnitConstants.POSITION_TYPE.KAIPING) > 0;
+    }
+    private static boolean isTiePian(int positionType){
+        return (positionType & AdUnitConstants.POSITION_TYPE.TIEPIAN) > 0;
+    }
+    private static boolean isTiePianMiddle(int positionType){
+        return (positionType & AdUnitConstants.POSITION_TYPE.TIEPIAN_MIDDLE) > 0;
+    }
+    private static boolean isTiePianPause(int positionType){
+        return (positionType & AdUnitConstants.POSITION_TYPE.TIEPIAN_PAUSE) > 0;
+    }
+    private static boolean isTiePianPost(int positionType){
+        return (positionType & AdUnitConstants.POSITION_TYPE.TIEPIAN_POST) > 0;
+    }
+
+    // 一个总的方法
+    public static boolean isAdSlotTypeOK(int adSlotType, int positionType){
+        switch (adSlotType){
+            case AdUnitConstants.POSITION_TYPE.KAIPING:
+                return isKaiPing(positionType);
+            case AdUnitConstants.POSITION_TYPE.TIEPIAN:
+                return isKaiPing(positionType);
+            case AdUnitConstants.POSITION_TYPE.TIEPIAN_MIDDLE:
+                return isKaiPing(positionType);
+            case AdUnitConstants.POSITION_TYPE.TIEPIAN_PAUSE:
+                return isKaiPing(positionType);
+            case AdUnitConstants.POSITION_TYPE.TIEPIAN_POST:
+                return isKaiPing(positionType);
+            default:
+                return false;
+        }
+    }
 }

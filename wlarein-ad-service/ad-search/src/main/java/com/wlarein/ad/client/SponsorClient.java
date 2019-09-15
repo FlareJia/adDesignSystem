@@ -14,9 +14,12 @@ import java.util.List;
 /**
  * 要调用的微服务为eureka-client-ad-sponsor
  */
-@FeignClient(value = "eureka-client-ad-sponsor", fallback = SponsorClientHystrix.class)
+@FeignClient(value = "eureka-client-ad-sponsor",
+        fallback = SponsorClientHystrix.class)
 public interface SponsorClient {
 
-    @RequestMapping(value = "/ad-sponsor/get/adPlan", method = RequestMethod.POST)
-    CommonResponse<List<AdPlan>> getAdPlans(@RequestBody AdPlanGetRequest request);
+    @RequestMapping(value = "/ad-sponsor/get/adPlan",
+            method = RequestMethod.POST)
+    CommonResponse<List<AdPlan>> getAdPlans(
+            @RequestBody AdPlanGetRequest request);
 }
