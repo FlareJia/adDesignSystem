@@ -378,3 +378,31 @@
     
 ## 11. 广告检索服务
    ### 11.1 
+   
+## 12. kafka
+   ### 12.1 消息系统：
+    Sender---msg--->Message Queue----msg---->Receiver(一个或多个)
+    
+   ### 12.2 kafka命令：
+    zookeeper: bin/zookeeper-server-start.sh -daemon config/zookeeper.properties
+    kafka-server: bin/kafka-server-start.sh config/server.properties
+    create topic: bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test
+    topic list: bin/kafka-topics.sh --list --zookeeper localhost:2181
+    producer: bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test
+    consumer: bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --from beginning
+    topic info: bin/kafka-topics.sh --describe --zookeeper localhost2181 --topic test
+    
+   ### 12.3 kafka发送消息的方式：
+    1)只管发送，不管结果：只调用接口发送消息到kafka服务器，不管成功写入与否。由于kafka是高可用的，因此大部分情况下消息都会写入，但在异常情况下会丢消息。
+    2)同步发送：调用send()方法返回一个Future对象，我们可以使用它的get()方法来判断消息发送成功与否
+    3)异步发送：调用send()时提供一个回调方法，当接收到broker结果后回调此方法
+   
+   ### 12.4 kafka消费消息方式：
+     1)自动提交位移
+     2)手动提交当前位移
+     3)手动异步提交当前位移
+     4)手动异步提交当前位移带回调
+     5)混合同步与异步提交位移
+     
+## 13. Hystrix Dashboard
+    ###
