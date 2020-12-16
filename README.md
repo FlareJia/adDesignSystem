@@ -46,13 +46,13 @@
 
 ## 代码架构：
     spring-cloud:
-        eureka
-        gateway
+        eureka 服务注册与服务发现
+        gateway 路由网关与转发
         adservice
-            common
-            dashboard
-            search
-            sponsor
+            common 通用模块
+            dashboard 监控模块
+            search 广告检索模块
+            sponsor 广告投放模块
             
 ###
 # 广告系统实现的功能：
@@ -75,12 +75,12 @@
     3.1 采用更多维度
     3.2 用户画像
     3.3 AI
-## 4.真实广告系统
+## 4.真实广告系统（及其子系统）
     广告投放系统
     广告检索系统
-    曝光检测系统
-    扣费系统
-    报表系统
+    曝光检测系统 -> 检测广告数据的曝光记录
+    扣费系统 -> 广告的每一次曝光都需要扣费，该系统同时负责将广告数据置位的功能
+    报表系统 -> 构建广告数据报表
     等等。。。
   
 ###
@@ -96,7 +96,7 @@
     java -jar ad-eureka-1.0-SNAPSHOT.jar --spring.profiles.active=server3
     实现Eureka Server的高可用
   ### 1.5 Eureka的角色组成：
-    Eureka Server 提供服务注册与发现
+    Eureka Server 提供 服务注册 与 服务发现 功能
     Service Provider 服务提供方，将自身服务注册到Eureka Server上，从而让Eureka Server持有服务的元信息，让其他的服务消费方能够找到当前服务
     Service Consumer 服务消费方，从Eureka Server上获取注册服务列表，从而能够消费服务
     Service Provider/Consumer 相对于Server，都叫Eureka client
@@ -106,6 +106,7 @@
     点对点的方式：服务直接直接调用，每个微服务都开放REST API，并调用其他微服务的接口（简单系统的时候可以用）
     API-Gateway方式：业务接口通过API网关暴露，是所有客户端接口的唯一入口。微服务之间的通信也通过API网关（Zuul）
   ### 2.2 Zuul作为网关
+    利用Zuul组件实现路由转发与请求信息记录（自定义过滤器）
     Zuul的生命周期：filters{Pre Routing Post Error Costom}
     HTTP Request 发送给Pre filters -> Routing filters -> Post filters
     Routing filters 和 Service交互   
@@ -243,6 +244,7 @@
     utils包：工具类
     
 ## 6.ad-search模块
+  广告检索子系统
   ### 6.1 依赖：
     1)Hystrix监控
     2)Eureka客户端
@@ -410,4 +412,5 @@
      5)混合同步与异步提交位移
      
 ## 13. Hystrix Dashboard
+    Hystrix监控
     ###
